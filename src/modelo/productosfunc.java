@@ -11,8 +11,9 @@ public class productosfunc {
     Conexion cn = new Conexion();
     PreparedStatement ps;
     ResultSet rs;
-    
+    //sentencia para insertar productos
     public boolean InsertarProd(Producto pro){
+        // orde=id que se mostrara en la aplicacion
         String sql = "INSERT INTO productos (orden_producto,nombre_producto,precio_prod,cantidad_producto, fecha_vencimiento ) VALUES (?,?,?,?,?)";
         try{
             conn = cn.getConn();
@@ -35,20 +36,32 @@ public class productosfunc {
     
     
     
-   public ArrayList ListaProducto() throws SQLException{
-        ArrayList Listaprod = new ArrayList();
-        String sql = "SELECT * from productos";
-        try{
-         conn = cn.getConn();
+   public static void ListaProducto(String[] args) throws SQLException {
+    
+        Connection conn = null;
+        Conexion cn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+try{
+         String sql = "SELECT * from productos";    
          ps = conn.prepareStatement(sql);
          rs = ps.executeQuery();
          while(rs.next()){
-            System.out.print(rs.getInt(1));
-        }   
+           int id =rs.getInt("id");
+           int id_ord= rs.getInt("orden_producto");  
+           String nomnreprod = rs.getString("nombre_producto");
+           int precio= rs.getInt("precio_prod");
+           int cantidad= rs.getInt("cantidad_producto");
+           String vencimientodate = rs.getString("fecha_vencimiento");
+           System.out.println(id+"\t\t"+id_ord+"\t\t"+nomnreprod+"\t\t"+precio+"\t\t"+cantidad+"\t\t"+vencimientodate);
+           conn.close();
+         } 
+              
         }catch(SQLException e){
-            System.out.println(e.toString());
+            System.out.println(e);
         }
-          return Listaprod; 
+          //return ListaProducto(); 
+       
    }
-    
+   
 }
