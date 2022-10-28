@@ -200,7 +200,7 @@ public class login extends javax.swing.JFrame {
       String user = user_name.getText();
       String contra = contra_tx.getText();
       
-      if (user.equals("USEREXAMPLE") && contra.equals("PASSEXAMPLE")){
+      if (user.equals("") && contra.equals("")){
           JOptionPane.showConfirmDialog(null,"Bienvenido "  );
       
       Inicio_app GN = new Inicio_app();
