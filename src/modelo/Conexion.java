@@ -11,9 +11,9 @@ public class Conexion {
     public static String pass = "root";
     public static String clase = "org.mariadb.jdbc.Driver";
     Connection conn;    
-    ResultSet rs;
+    //ResultSet rs;
     
-    
+     
     //private String result;
      public Connection getConn() throws SQLException
       {
