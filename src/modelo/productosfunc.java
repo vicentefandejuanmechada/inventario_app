@@ -35,7 +35,7 @@ public class productosfunc {
     
     
     
-    
+    /*
    public static void ListaProducto(String[] args) throws SQLException {
     
         Connection conn = null;
@@ -63,5 +63,5 @@ try{
           //return ListaProducto(); 
        
    }
-   
+   */
 }
