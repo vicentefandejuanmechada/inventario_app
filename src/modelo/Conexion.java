@@ -11,8 +11,9 @@ public class Conexion {
     public static String pass = "root";
     public static String clase = "org.mariadb.jdbc.Driver";
     Connection conn;    
-    ResultSet rs;
-    PreparedStatement ps ;
+    //ResultSet rs;
+    
+     
     //private String result;
      public Connection getConn() throws SQLException
       {
@@ -22,6 +23,9 @@ public class Conexion {
           Class.forName(clase);
           conn = DriverManager.getConnection(url,usuario,pass);
           System.out.print("conexion correcta");
+          
+         
+        
       }catch(ClassNotFoundException e){
           System.err.println("conexion incorrecta");
           System.err.println(e);

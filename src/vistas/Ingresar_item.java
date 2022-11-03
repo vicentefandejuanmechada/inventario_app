@@ -6,29 +6,37 @@
 package vistas;
 
 
-import java.sql.Connection;
+//import java.sql.Connection;
+import java.beans.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 import modelo.Conexion;
 import modelo.Producto;
 import modelo.productosfunc;
+import org.mariadb.jdbc.Connection;
+import org.mariadb.jdbc.Driver;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author admin1
  */
 public class Ingresar_item extends javax.swing.JFrame {
-   Producto pro = new Producto();
+   //llama los constructores
+    Producto pro = new Producto();
+   //llama a la productosfunc para llamar sus sentencias como el insert
    productosfunc proFunc = new productosfunc();
-   
+   //llama funcion conectar 
+    Conexion conn = new Conexion();
+    
+    PreparedStatement ps ;
+           
  
    
    
@@ -68,7 +76,7 @@ public class Ingresar_item extends javax.swing.JFrame {
         actualizar_btn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Table1 = new javax.swing.JTable();
+        tabladatosprod = new javax.swing.JTable();
         descripciontxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -128,18 +136,26 @@ public class Ingresar_item extends javax.swing.JFrame {
         jLabel7.setMaximumSize(new java.awt.Dimension(50, 30));
         jLabel7.setMinimumSize(new java.awt.Dimension(50, 30));
 
-        Table1.setModel(new javax.swing.table.DefaultTableModel(
+        tabladatosprod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "ID(cliente)", "Nombre producto", "Precio", "Cantidad", "Fecha vencimiento", "Descripcion"
             }
-        ));
-        jScrollPane2.setViewportView(Table1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabladatosprod);
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Descripcion:");
@@ -148,10 +164,6 @@ public class Ingresar_item extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(239, 239, 239))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -171,21 +183,30 @@ public class Ingresar_item extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
                                 .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(precio_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nu_serie, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(precio_prod, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                                    .addComponent(nombre_prod)
+                                    .addComponent(nu_serie)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cantidad_prod)
-                                    .addComponent(fecha_vencimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(descripciontxt, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(fecha_vencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cantidad_prod)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(descripciontxt, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(98, 98, 98))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 886, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,10 +226,10 @@ public class Ingresar_item extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(precio_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cantidad_prod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cantidad_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(fecha_vencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,8 +240,8 @@ public class Ingresar_item extends javax.swing.JFrame {
                     .addComponent(descripciontxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(259, 259, 259))
         );
 
         jMenu1.setText("File");
@@ -265,7 +286,8 @@ public class Ingresar_item extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Volver_a_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Volver_a_inicioActionPerformed
-         Inicio_app GN = new Inicio_app();
+       
+        Inicio_app GN = new Inicio_app();
         GN.setVisible(true);
         
         Ingresar_item ingresar_item = new Ingresar_item();
@@ -278,9 +300,64 @@ public class Ingresar_item extends javax.swing.JFrame {
     }//GEN-LAST:event_Volver_a_inicioMouseClicked
 
     private void actualizar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_btnActionPerformed
-     productosfunc.ListaProducto();
-     
-       
+       // DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
+      
+            try {
+                
+                String url = "jdbc:mariadb://localhost:3306/inventario";
+                String usuario = "root";
+                String pass = "root";
+               Connection cnew;
+               Class.forName("org.mariadb.jdbc.Driver");
+               cnew = (Connection) DriverManager.getConnection(url,usuario,pass);
+                org.mariadb.jdbc.Statement st = cnew.createStatement();
+                String sql = "SELECT * FROM productos";
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                   String id = String.valueOf(rs.getInt("id"));
+                   String orde_nu = String.valueOf(rs.getInt("orden_producto"));
+                   String Nombreprod = rs.getString("nombre_producto");
+                   String precioprod = String.valueOf(rs.getInt("precio_prod"));
+                   String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
+                   String fechavencimiento = rs.getString("fecha_vencimiento");
+                   String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
+                   DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
+                    //agrega los datos
+           tableModel.addRow(tabladb);
+                }
+               
+                //System.out.println("a");
+            } catch (ClassNotFoundException | SQLException e) {
+                System.err.println(e);
+        }
+        
+        
+        
+        /*
+        try {
+           //productosfunc.ListaProducto();
+           //llamamos la funcion conectar para obtener la conexion a la base de datos
+           conn.getConn();
+           
+           String sql = "SELECT * from productos";
+           ResultSet rs = ps.executeQuery(sql);
+           while(rs.next()){
+           String id = String.valueOf(rs.getInt("id"));
+           String orde_nu = String.valueOf(rs.getInt("orden_producto"));
+           String Nombreprod = rs.getString("nombre_producto");
+           String precioprod = String.valueOf(rs.getInt("precio_prod"));
+           String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
+           String fechavencimiento = String.valueOf(rs.getInt("fecha_vencimiento"));
+           String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
+           DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
+           //agrega los datos
+           tableModel.addRow(tabladb);
+          }
+         
+       } catch (SQLException e) {
+            System.out.println(e);
+       }
+       */
     }//GEN-LAST:event_actualizar_btnActionPerformed
 
     private void nu_serieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nu_serieActionPerformed
@@ -289,6 +366,8 @@ public class Ingresar_item extends javax.swing.JFrame {
     }//GEN-LAST:event_nu_serieActionPerformed
 
     private void ingresar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_btnActionPerformed
+       //se llama al metodo para poder insertar un nuevo producto
+       //se determinan los valores por los jtexfield dandoles un valor a cado uno
         if(!"".equals(nu_serie.getText()) || !"".equals(nombre_prod.getText())|| !"".equals(precio_prod.getText())|| !"".equals(cantidad_prod.getText())|| !"".equals(fecha_vencimiento.getText()))
         {
             pro.setOrden_producto(Integer.parseInt(nu_serie.getText()));
@@ -340,7 +419,6 @@ public class Ingresar_item extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTable Table1;
     private javax.swing.JRadioButtonMenuItem Volver_a_inicio;
     private javax.swing.JButton actualizar_btn;
     private javax.swing.JTextField cantidad_prod;
@@ -365,5 +443,6 @@ public class Ingresar_item extends javax.swing.JFrame {
     private javax.swing.JTextField nombre_prod;
     private javax.swing.JTextField nu_serie;
     private javax.swing.JTextField precio_prod;
+    public javax.swing.JTable tabladatosprod;
     // End of variables declaration//GEN-END:variables
 }
