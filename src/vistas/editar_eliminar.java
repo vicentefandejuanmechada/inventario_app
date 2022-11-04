@@ -40,20 +40,24 @@ public class editar_eliminar extends javax.swing.JFrame {
     
         CargarTabla();
     }
-    
+    //funcion para cagar la tabla
      public void CargarTabla(){
+         ///llama la funcion limpiar tabla para evitar redundancia de datos.
         CleanTable();
             try {
-                
+                //reitera la conexion nuevamente para mostrar los datos
                String url = "jdbc:mariadb://localhost:3306/inventario";
                String usuario = "root";
                String pass = "root";
                Connection cnew2;
                Class.forName("org.mariadb.jdbc.Driver");
+               //conexion getCon.. url+usuario+contraseña
                cnew2 = (Connection) DriverManager.getConnection(url,usuario,pass);
                 org.mariadb.jdbc.Statement st = cnew2.createStatement();
+                //sentencia sql
                 String sql = "SELECT * FROM productos";
                 ResultSet rs = st.executeQuery(sql);
+                //establece cada valor en cada opcion
                 while(rs.next()){
                    String id = String.valueOf(rs.getInt("id"));
                    String orde_nu = String.valueOf(rs.getInt("orden_producto"));
@@ -61,9 +65,11 @@ public class editar_eliminar extends javax.swing.JFrame {
                    String precioprod = String.valueOf(rs.getInt("precio_prod"));
                    String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
                    String fechavencimiento = rs.getString("fecha_vencimiento");
+                   ////==
                    String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
                    DefaultTableModel tableModel =(DefaultTableModel)TableProd.getModel();
                     //agrega los datos
+                    //agrega las columnas a funcion de las columnas
            tableModel.addRow(tabladb);
                 }
                
@@ -76,6 +82,7 @@ public class editar_eliminar extends javax.swing.JFrame {
     }
     
     public void CleanTable(){
+        ///limpia la tabla 
     DefaultTableModel tableModel = (DefaultTableModel)TableProd.getModel();
     tableModel.setRowCount(0);
         
