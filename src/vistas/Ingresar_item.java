@@ -333,37 +333,7 @@ public class Ingresar_item extends javax.swing.JFrame {
 
     private void actualizar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_btnActionPerformed
        // DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
-        CleanTable();
-            try {
-                
-               String url = "jdbc:mariadb://localhost:3306/inventario";
-               String usuario = "root";
-               String pass = "root";
-               Connection cnew;
-               Class.forName("org.mariadb.jdbc.Driver");
-               cnew = (Connection) DriverManager.getConnection(url,usuario,pass);
-                org.mariadb.jdbc.Statement st = cnew.createStatement();
-                String sql = "SELECT * FROM productos";
-                ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                   String id = String.valueOf(rs.getInt("id"));
-                   String orde_nu = String.valueOf(rs.getInt("orden_producto"));
-                   String Nombreprod = rs.getString("nombre_producto");
-                   String precioprod = String.valueOf(rs.getInt("precio_prod"));
-                   String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
-                   String fechavencimiento = rs.getString("fecha_vencimiento");
-                   String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
-                   DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
-                    //agrega los datos
-           tableModel.addRow(tabladb);
-                }
-               
-                //System.out.println("a");
-            } catch (ClassNotFoundException | SQLException e) {
-                System.err.println(e);
-        }
-        
-        
+        CargarTabla();
         
     }//GEN-LAST:event_actualizar_btnActionPerformed
 
