@@ -88,6 +88,11 @@ public class Inicio_app extends javax.swing.JFrame {
 
         editar_user.setBackground(new java.awt.Color(0, 0, 0));
         editar_user.setLabel("editar/eliminar usuario");
+        editar_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editar_userActionPerformed(evt);
+            }
+        });
 
         crear_user2.setBackground(new java.awt.Color(0, 0, 0));
         crear_user2.setText("Crear usuario");
@@ -161,7 +166,7 @@ public class Inicio_app extends javax.swing.JFrame {
     private void ingresar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_prodActionPerformed
         Ingresar_item GN = new Ingresar_item();
         GN.setVisible(true);
-        this.hide();
+        this.dispose();
     }//GEN-LAST:event_ingresar_prodActionPerformed
 
     private void crear_user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_user2MouseClicked
@@ -169,6 +174,12 @@ public class Inicio_app extends javax.swing.JFrame {
        GN.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_crear_user2MouseClicked
+
+    private void editar_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_userActionPerformed
+        editar_eliminar GN = new editar_eliminar();
+        GN.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_editar_userActionPerformed
 
     /**
      * @param args the command line arguments
