@@ -67,10 +67,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -150,7 +147,8 @@
                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane2" min="-2" pref="886" max="-2" attributes="0"/>
+                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="910" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -158,14 +156,14 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="nu_serie" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="nombre_prod" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -175,7 +173,7 @@
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="precio_prod" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cantidad_prod" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -185,16 +183,16 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="fecha_vencimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ingresar_btn" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="actualizar_btn" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="descripciontxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="74" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="196" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="188" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -297,7 +295,7 @@
             <Component class="javax.swing.JTable" name="tabladatosprod">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="4">
+                  <Table columnCount="7" rowCount="6">
                     <Column editable="true" title="ID" type="java.lang.String"/>
                     <Column editable="true" title="ID(cliente)" type="java.lang.String"/>
                     <Column editable="true" title="Nombre producto" type="java.lang.String"/>
