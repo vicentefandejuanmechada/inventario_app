@@ -35,33 +35,5 @@ public class productosfunc {
     
     
     
-    /*
-   public static void ListaProducto(String[] args) throws SQLException {
-    
-        Connection conn = null;
-        Conexion cn = new Conexion();
-        PreparedStatement ps;
-        ResultSet rs;
-try{
-         String sql = "SELECT * from productos";    
-         ps = conn.prepareStatement(sql);
-         rs = ps.executeQuery();
-         while(rs.next()){
-           int id =rs.getInt("id");
-           int id_ord= rs.getInt("orden_producto");  
-           String nomnreprod = rs.getString("nombre_producto");
-           int precio= rs.getInt("precio_prod");
-           int cantidad= rs.getInt("cantidad_producto");
-           String vencimientodate = rs.getString("fecha_vencimiento");
-           System.out.println(id+"\t\t"+id_ord+"\t\t"+nomnreprod+"\t\t"+precio+"\t\t"+cantidad+"\t\t"+vencimientodate);
-           conn.close();
-         } 
-              
-        }catch(SQLException e){
-            System.out.println(e);
-        }
-          //return ListaProducto(); 
-       
-   }
-   */
+   
 }
