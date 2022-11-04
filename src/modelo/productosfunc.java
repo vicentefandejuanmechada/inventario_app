@@ -33,7 +33,23 @@ public class productosfunc {
         
     }
     
+    public boolean EliminarProd(int id){
+        String sql = "DELETE FROM productos WHERE id = ?";
+        try {
+            conn = cn.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            System.out.println("funciona el delete");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("no funciona el delete");
+            return false;
+        }
+        }
     
     
+   /// public boolean EditProd (){
+       
    
 }

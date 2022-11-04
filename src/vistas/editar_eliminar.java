@@ -40,20 +40,24 @@ public class editar_eliminar extends javax.swing.JFrame {
     
         CargarTabla();
     }
-    
+    //funcion para cagar la tabla
      public void CargarTabla(){
+         ///llama la funcion limpiar tabla para evitar redundancia de datos.
         CleanTable();
             try {
-                
+                //reitera la conexion nuevamente para mostrar los datos
                String url = "jdbc:mariadb://localhost:3306/inventario";
                String usuario = "root";
                String pass = "root";
                Connection cnew2;
                Class.forName("org.mariadb.jdbc.Driver");
+               //conexion getCon.. url+usuario+contraseña
                cnew2 = (Connection) DriverManager.getConnection(url,usuario,pass);
                 org.mariadb.jdbc.Statement st = cnew2.createStatement();
+                //sentencia sql
                 String sql = "SELECT * FROM productos";
                 ResultSet rs = st.executeQuery(sql);
+                //establece cada valor en cada opcion
                 while(rs.next()){
                    String id = String.valueOf(rs.getInt("id"));
                    String orde_nu = String.valueOf(rs.getInt("orden_producto"));
@@ -61,9 +65,11 @@ public class editar_eliminar extends javax.swing.JFrame {
                    String precioprod = String.valueOf(rs.getInt("precio_prod"));
                    String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
                    String fechavencimiento = rs.getString("fecha_vencimiento");
+                   ////==
                    String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
                    DefaultTableModel tableModel =(DefaultTableModel)TableProd.getModel();
                     //agrega los datos
+                    //agrega las columnas a funcion de las columnas
            tableModel.addRow(tabladb);
                 }
                
@@ -76,12 +82,13 @@ public class editar_eliminar extends javax.swing.JFrame {
     }
     
     public void CleanTable(){
+        ///limpia la tabla 
     DefaultTableModel tableModel = (DefaultTableModel)TableProd.getModel();
     tableModel.setRowCount(0);
         
     }
    
-
+/////////////AAAAAAAAAAAAAAAAAAA
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,14 +131,14 @@ public class editar_eliminar extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TableProd = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        eliminarprodbt = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        ideliminar = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        Actualizareditbl = new javax.swing.JButton();
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
+        Volver_a_home_editdelete = new javax.swing.JCheckBoxMenuItem();
         jMenu8 = new javax.swing.JMenu();
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -224,9 +231,14 @@ public class editar_eliminar extends javax.swing.JFrame {
 
         jButton1.setText("editar");
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 0, 0));
-        jButton2.setText("X");
+        eliminarprodbt.setBackground(new java.awt.Color(0, 0, 0));
+        eliminarprodbt.setForeground(new java.awt.Color(255, 0, 0));
+        eliminarprodbt.setText("X");
+        eliminarprodbt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarprodbtMouseClicked(evt);
+            }
+        });
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("confirmar edicion");
@@ -236,13 +248,6 @@ public class editar_eliminar extends javax.swing.JFrame {
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("confirmar eliminacion");
-
-        Actualizareditbl.setText("Actualizar tabla");
-        Actualizareditbl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizareditblActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -273,17 +278,14 @@ public class editar_eliminar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(171, 171, 171)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Actualizareditbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ideliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminarprodbt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(175, 175, 175))
         );
         jPanel2Layout.setVerticalGroup(
@@ -294,7 +296,7 @@ public class editar_eliminar extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ideliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,21 +309,19 @@ public class editar_eliminar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jButton2))
+                    .addComponent(eliminarprodbt))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(Actualizareditbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -340,6 +340,16 @@ public class editar_eliminar extends javax.swing.JFrame {
         );
 
         jMenu7.setText("File");
+
+        Volver_a_home_editdelete.setSelected(true);
+        Volver_a_home_editdelete.setText("Volver");
+        Volver_a_home_editdelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Volver_a_home_editdeleteActionPerformed(evt);
+            }
+        });
+        jMenu7.add(Volver_a_home_editdelete);
+
         jMenuBar4.add(jMenu7);
 
         jMenu8.setText("Edit");
@@ -361,9 +371,21 @@ public class editar_eliminar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ActualizareditblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizareditblActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ActualizareditblActionPerformed
+    private void eliminarprodbtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarprodbtMouseClicked
+        if(!"".equals(ideliminar.getText())){
+            int id = Integer.parseInt(ideliminar.getText());
+            proFunc.EliminarProd(id);
+            CargarTabla();
+        }
+        
+        
+    }//GEN-LAST:event_eliminarprodbtMouseClicked
+
+    private void Volver_a_home_editdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Volver_a_home_editdeleteActionPerformed
+        Inicio_app GN = new Inicio_app();
+        GN.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Volver_a_home_editdeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,10 +423,11 @@ public class editar_eliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizareditbl;
     private javax.swing.JTable TableProd;
+    private javax.swing.JCheckBoxMenuItem Volver_a_home_editdelete;
+    private javax.swing.JButton eliminarprodbt;
+    private javax.swing.JTextField ideliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -441,7 +464,6 @@ public class editar_eliminar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
