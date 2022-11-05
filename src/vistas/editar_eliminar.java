@@ -65,6 +65,7 @@ public class editar_eliminar extends javax.swing.JFrame {
                    String precioprod = String.valueOf(rs.getInt("precio_prod"));
                    String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
                    String fechavencimiento = rs.getString("fecha_vencimiento");
+                   String descripcion = rs.getString("descripcion");
                    ////==
                    String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
                    DefaultTableModel tableModel =(DefaultTableModel)TableProd.getModel();
