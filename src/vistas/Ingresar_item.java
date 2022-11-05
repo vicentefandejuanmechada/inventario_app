@@ -66,7 +66,8 @@ public class Ingresar_item extends javax.swing.JFrame {
                    String precioprod = String.valueOf(rs.getInt("precio_prod"));
                    String cantidadprod = String.valueOf(rs.getInt("cantidad_producto"));
                    String fechavencimiento = rs.getString("fecha_vencimiento");
-                   String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento};
+                   String descripcion = rs.getString("descripcion");
+                   String tabladb [] = {id,orde_nu,Nombreprod,precioprod,cantidadprod,fechavencimiento,descripcion};
                    DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
                     //agrega los datos
            tableModel.addRow(tabladb);
@@ -346,13 +347,14 @@ public class Ingresar_item extends javax.swing.JFrame {
     private void ingresar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_btnActionPerformed
        //se llama al metodo para poder insertar un nuevo producto
        //se determinan los valores por los jtexfield dandoles un valor a cado uno
-        if(!"".equals(nu_serie.getText()) || !"".equals(nombre_prod.getText())|| !"".equals(precio_prod.getText())|| !"".equals(cantidad_prod.getText())|| !"".equals(fecha_vencimiento.getText()))
+        if(!"".equals(nu_serie.getText()) || !"".equals(nombre_prod.getText())|| !"".equals(precio_prod.getText())|| !"".equals(cantidad_prod.getText())|| !"".equals(fecha_vencimiento.getText())|| !"".equals(descripciontxt.getText()))
         {
             pro.setOrden_producto(Integer.parseInt(nu_serie.getText()));
             pro.setNombre_producto(nombre_prod.getText());
             pro.setPrecio_prod(Integer.parseInt(precio_prod.getText()));
             pro.setCantidad_producto(Float.parseFloat(cantidad_prod.getText()));
             pro.setFecha_vencimiento(fecha_vencimiento.getText());
+            pro.setDescripcion(descripciontxt.getText());
             proFunc.InsertarProd(pro);
 
         }else{

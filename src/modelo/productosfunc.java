@@ -14,7 +14,7 @@ public class productosfunc {
     //sentencia para insertar productos
     public boolean InsertarProd(Producto pro){
         // orde=id que se mostrara en la aplicacion
-        String sql = "INSERT INTO productos (orden_producto,nombre_producto,precio_prod,cantidad_producto, fecha_vencimiento ) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO productos (orden_producto,nombre_producto,precio_prod,cantidad_producto, fecha_vencimiento, descripcion ) VALUES (?,?,?,?,?,?)";
         try{
             conn = cn.getConn();
             ps = conn.prepareStatement(sql);
@@ -23,6 +23,7 @@ public class productosfunc {
             ps.setInt(3,pro.getPrecio_prod());
             ps.setFloat(4,pro.getCantidad_producto());
             ps.setString(5, pro.getFecha_vencimiento());
+            ps.setString(6, pro.getDescripcion());
             ps.execute();
             return true;
         }catch(SQLException e){
@@ -49,7 +50,23 @@ public class productosfunc {
         }
     
     
-   /// public boolean EditProd (){
+    public boolean EditProd (Producto pro){
+        String sql = "UPDATE productos SET nombre_producto=?, precio_prod=?, cantidad_producto=?, fecha_vencimiento=?, descripcion=? WHERE orden_producto=?";
+        try {
+          conn = cn.getConn();
+          ps = conn.prepareStatement(sql);
+          ps.setString(3, pro.getNombre_producto());
+          ps.setInt(4, pro.getPrecio_prod());
+          ps.setFloat(5, pro.getCantidad_producto());
+          ps.setString(6, pro.getFecha_vencimiento());
+          ps.setInt(7, pro.getOrden_producto());
+          return true;
+        } catch (Exception e) {
+          
+            return false;
+        }
+        
+    }
        
    
 }

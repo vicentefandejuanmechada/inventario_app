@@ -8,27 +8,7 @@ public class Producto {
     private int precio_prod;
     private float cantidad_producto;
     private String fecha_vencimiento;
-
-    
-    public Producto(){
-        
-    }
-
-    public Producto(int orden_producto, String nombre_producto,int precio_prod, float cantidad_producto, String fecha_vencimiento) {
-        this.orden_producto = orden_producto;
-        this.nombre_producto = nombre_producto;
-        this.precio_prod = precio_prod;
-        this.cantidad_producto = cantidad_producto;
-        this.fecha_vencimiento = fecha_vencimiento;
-    }
-
-    public int getPrecio_prod() {
-        return precio_prod;
-    }
-
-    public void setPrecio_prod(int precio_prod) {
-        this.precio_prod = precio_prod;
-    }
+    private String descripcion;
 
     public int getOrden_producto() {
         return orden_producto;
@@ -46,6 +26,14 @@ public class Producto {
         this.nombre_producto = nombre_producto;
     }
 
+    public int getPrecio_prod() {
+        return precio_prod;
+    }
+
+    public void setPrecio_prod(int precio_prod) {
+        this.precio_prod = precio_prod;
+    }
+
     public float getCantidad_producto() {
         return cantidad_producto;
     }
@@ -61,4 +49,29 @@ public class Producto {
     public void setFecha_vencimiento(String fecha_vencimiento) {
         this.fecha_vencimiento = fecha_vencimiento;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Producto(int orden_producto, String nombre_producto, int precio_prod, float cantidad_producto, String fecha_vencimiento, String descripcion) {
+        this.orden_producto = orden_producto;
+        this.nombre_producto = nombre_producto;
+        this.precio_prod = precio_prod;
+        this.cantidad_producto = cantidad_producto;
+        this.fecha_vencimiento = fecha_vencimiento;
+        this.descripcion = descripcion;
+    }
+
+    
+    public Producto(){
+        
+    }
+
+    
+   
 }
