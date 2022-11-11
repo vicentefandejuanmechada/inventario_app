@@ -3,12 +3,31 @@ package modelo;
 
 
 public class Producto {
+    private int id;
     private int orden_producto;
     private String nombre_producto;
     private int precio_prod;
     private float cantidad_producto;
     private String fecha_vencimiento;
     private String descripcion;
+
+    public Producto(int id, int orden_producto, String nombre_producto, int precio_prod, float cantidad_producto, String fecha_vencimiento, String descripcion) {
+        this.id = id;
+        this.orden_producto = orden_producto;
+        this.nombre_producto = nombre_producto;
+        this.precio_prod = precio_prod;
+        this.cantidad_producto = cantidad_producto;
+        this.fecha_vencimiento = fecha_vencimiento;
+        this.descripcion = descripcion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getOrden_producto() {
         return orden_producto;
@@ -58,15 +77,7 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Producto(int orden_producto, String nombre_producto, int precio_prod, float cantidad_producto, String fecha_vencimiento, String descripcion) {
-        this.orden_producto = orden_producto;
-        this.nombre_producto = nombre_producto;
-        this.precio_prod = precio_prod;
-        this.cantidad_producto = cantidad_producto;
-        this.fecha_vencimiento = fecha_vencimiento;
-        this.descripcion = descripcion;
-    }
-
+    
     
     public Producto(){
         
