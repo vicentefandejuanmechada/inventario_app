@@ -41,7 +41,6 @@ public class login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         contra_tx = new javax.swing.JPasswordField();
         iniciar_sesion = new javax.swing.JButton();
-        ir_anuevo_crearbtn = new javax.swing.JButton();
         logintitle = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
@@ -97,13 +96,6 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        ir_anuevo_crearbtn.setText("Crear nuevo usuario");
-        ir_anuevo_crearbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ir_anuevo_crearbtnMouseClicked(evt);
-            }
-        });
-
         logintitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         logintitle.setForeground(new java.awt.Color(255, 255, 255));
         logintitle.setText("Iniciar Sesión");
@@ -116,17 +108,13 @@ public class login extends javax.swing.JFrame {
         fondo_loginLayout.setHorizontalGroup(
             fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondo_loginLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(fondo_loginLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondo_loginLayout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(12, 12, 12)))
+                .addGap(119, 119, 119)
+                .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondo_loginLayout.createSequentialGroup()
-                        .addComponent(ir_anuevo_crearbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondo_loginLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addGap(12, 12, 12)))
                 .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondo_loginLayout.createSequentialGroup()
@@ -155,9 +143,7 @@ public class login extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(contra_tx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87)
-                .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ir_anuevo_crearbtn)
-                    .addComponent(iniciar_sesion))
+                .addComponent(iniciar_sesion)
                 .addGap(31, 31, 31))
         );
 
@@ -216,12 +202,6 @@ public class login extends javax.swing.JFrame {
         iniciar_sesion.setBackground(Color.black);
     }//GEN-LAST:event_iniciar_sesionActionPerformed
 
-    private void ir_anuevo_crearbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ir_anuevo_crearbtnMouseClicked
-       crear_user GN = new crear_user();
-       GN.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_ir_anuevo_crearbtnMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -261,7 +241,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPasswordField contra_tx;
     private javax.swing.JPanel fondo_login;
     private javax.swing.JButton iniciar_sesion;
-    private javax.swing.JButton ir_anuevo_crearbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
