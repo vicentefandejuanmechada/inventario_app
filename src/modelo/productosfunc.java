@@ -50,23 +50,5 @@ public class productosfunc {
         }
     
     
-    public boolean EditProd (Producto pro){
-        String sql = "UPDATE productos SET nombre_producto=?, precio_prod=?, cantidad_producto=?, fecha_vencimiento=?, descripcion=? WHERE orden_producto=?";
-        try {
-          conn = cn.getConn();
-          ps = conn.prepareStatement(sql);
-          ps.setString(3, pro.getNombre_producto());
-          ps.setInt(4, pro.getPrecio_prod());
-          ps.setFloat(5, pro.getCantidad_producto());
-          ps.setString(6, pro.getFecha_vencimiento());
-          ps.setInt(7, pro.getOrden_producto());
-          return true;
-        } catch (Exception e) {
-          
-            return false;
-        }
-        
-    }
-       
-   
+ 
 }
