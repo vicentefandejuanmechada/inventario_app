@@ -141,6 +141,7 @@ public class editar_eliminar extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         descripcion_edit_txt = new javax.swing.JTextField();
         buscar_prod_btn = new javax.swing.JButton();
+        merma_btn = new javax.swing.JButton();
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
         Volver_a_home_editdelete = new javax.swing.JCheckBoxMenuItem();
@@ -297,6 +298,13 @@ public class editar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        merma_btn.setText("mermar producto");
+        merma_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                merma_btnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -335,11 +343,12 @@ public class editar_eliminar extends javax.swing.JFrame {
                     .addComponent(nuorden_editxt, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(descripcion_edit_txt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10)
                     .addComponent(ideliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarprodbt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eliminarprodbt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(merma_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(175, 175, 175))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(204, 204, 204)
@@ -390,7 +399,8 @@ public class editar_eliminar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(descripcion_edit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(descripcion_edit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(merma_btn))
                 .addGap(5, 5, 5)
                 .addComponent(edit_prod_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -552,6 +562,29 @@ public class editar_eliminar extends javax.swing.JFrame {
   
     }//GEN-LAST:event_edit_prod_btnActionPerformed
 
+    private void merma_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_merma_btnMouseClicked
+    Connection conn = null;
+        try {
+                conn = (Connection) cn.getConn();
+                String nombre_merma =name_prod_editxt.getText();
+                String cantidad_a_mermar = cantidadprod_editxt.getText();
+                String precio_merma = precioedit_txt.getText();
+                int resultadomulti = Integer.valueOf(precio_merma) * Integer.valueOf(cantidad_a_mermar)  ;
+                String resultado_cantidadxprecio =  String.valueOf(resultadomulti);
+                String id_prod = id_editprod_txt.getText();
+                
+                String sql = "INSERT INTO merma_tabla(nombre_prod_mermado,cantidad_productos_mermados,precio_prod_mermados,id_producto) Values ('"+nombre_merma+"','"+cantidad_a_mermar+"','"+resultado_cantidadxprecio+"','"+id_prod+"')";
+                PreparedStatement pss = conn.prepareStatement(sql);
+                System.out.println("        Funciono el ingreso a tabla merma ");
+                System.out.println(resultado_cantidadxprecio);
+                pss.execute();
+                
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+                // TODO add your handling code here:
+    }//GEN-LAST:event_merma_btnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -634,6 +667,7 @@ public class editar_eliminar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton merma_btn;
     private javax.swing.JTextField name_prod_editxt;
     private javax.swing.JTextField nuorden_editxt;
     private javax.swing.JTextField precioedit_txt;
