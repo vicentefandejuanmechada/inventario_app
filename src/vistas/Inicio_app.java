@@ -78,6 +78,11 @@ public class Inicio_app extends javax.swing.JFrame {
         jLabel2.setText("Ingresar Producto");
 
         vender_prod.setText("jButton1");
+        vender_prod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vender_prodMouseClicked(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ventas");
@@ -180,6 +185,12 @@ public class Inicio_app extends javax.swing.JFrame {
         GN.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_editar_userActionPerformed
+
+    private void vender_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vender_prodMouseClicked
+      Ventas GN = new Ventas();
+      GN.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_vender_prodMouseClicked
 
     /**
      * @param args the command line arguments
