@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/modelo/productosfunc.java</file>
             <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/Ventas.java</file>
-            <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/crear_user_iniciado.java</file>
             <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/Ingresar_item.java</file>
-            <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/editar_eliminar.java</file>
+            <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/Inicio_app.java</file>
             <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/modelo/Conexion.java</file>
             <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/modelo/Producto.java</file>
+            <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/editar_eliminar.java</file>
             <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/vistas/login.java</file>
+            <file>file:/C:/Users/admin1/Documents/NetBeansProjects/inventario_app/src/modelo/usuarios.java</file>
         </group>
     </open-files>
 </project-private>

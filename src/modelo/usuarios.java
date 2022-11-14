@@ -11,15 +11,17 @@ package modelo;
  */
 public class usuarios {
   private Integer id_user;
+  private Integer id_del_tipo_user;
   private String nombre_user;
-  private String  correo_contacto;
-  private Integer id_tipo_de_user;
+  private String passw_user;
+  private String  e_mail_user;
 
-    public usuarios(Integer id_user, String nombre_user, String correo_contacto, Integer id_tipo_de_user) {
+    public usuarios(Integer id_user, Integer id_del_tipo_user, String nombre_user, String passw_user, String e_mail_user) {
         this.id_user = id_user;
+        this.id_del_tipo_user = id_del_tipo_user;
         this.nombre_user = nombre_user;
-        this.correo_contacto = correo_contacto;
-        this.id_tipo_de_user = id_tipo_de_user;
+        this.passw_user = passw_user;
+        this.e_mail_user = e_mail_user;
     }
 
     public Integer getId_user() {
@@ -30,6 +32,14 @@ public class usuarios {
         this.id_user = id_user;
     }
 
+    public Integer getId_del_tipo_user() {
+        return id_del_tipo_user;
+    }
+
+    public void setId_del_tipo_user(Integer id_del_tipo_user) {
+        this.id_del_tipo_user = id_del_tipo_user;
+    }
+
     public String getNombre_user() {
         return nombre_user;
     }
@@ -38,20 +48,24 @@ public class usuarios {
         this.nombre_user = nombre_user;
     }
 
-    public String getCorreo_contacto() {
-        return correo_contacto;
+    public String getPassw_user() {
+        return passw_user;
     }
 
-    public void setCorreo_contacto(String correo_contacto) {
-        this.correo_contacto = correo_contacto;
+    public void setPassw_user(String passw_user) {
+        this.passw_user = passw_user;
     }
 
-    public Integer getId_tipo_de_user() {
-        return id_tipo_de_user;
+    public String getE_mail_user() {
+        return e_mail_user;
     }
 
-    public void setId_tipo_de_user(Integer id_tipo_de_user) {
-        this.id_tipo_de_user = id_tipo_de_user;
+    public void setE_mail_user(String e_mail_user) {
+        this.e_mail_user = e_mail_user;
     }
-    
+ 
+    public usuarios(){
+        
+    }
+
 }
