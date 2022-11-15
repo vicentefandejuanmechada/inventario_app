@@ -39,4 +39,22 @@ public class user_func {
         }
         return false;
     }
+    
+    
+    public boolean Eliminaruser(int id_user){
+        String sql= "DELETE FROM users WHERE id_user=? and users.id_del_tipo_de_user=2";
+        try {
+            conn = cn.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id_user);
+            ps.execute();
+            System.out.println("    funciono el delete USER");
+            
+            return true;
+        } catch (SQLException e) {
+            System.out.println("No funciono");
+            System.out.println(e);
+        return false;
+        }
+        }
 }
