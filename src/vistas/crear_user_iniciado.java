@@ -165,6 +165,11 @@ public class crear_user_iniciado extends javax.swing.JFrame {
         jMenu3.setText("opciones");
 
         volver_a_inicio_btn.setText("volver");
+        volver_a_inicio_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volver_a_inicio_btnActionPerformed(evt);
+            }
+        });
         jMenu3.add(volver_a_inicio_btn);
 
         jMenuBar2.add(jMenu3);
@@ -207,6 +212,12 @@ public class crear_user_iniciado extends javax.swing.JFrame {
         us.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void volver_a_inicio_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver_a_inicio_btnActionPerformed
+          Inicio_app nw = new Inicio_app();
+       nw.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_volver_a_inicio_btnActionPerformed
 
     /**
      * @param args the command line arguments
