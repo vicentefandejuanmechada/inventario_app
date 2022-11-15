@@ -87,7 +87,7 @@
                               <Component id="logintitle" min="-2" pref="158" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="contra_tx" max="32767" attributes="0"/>
-                                  <Component id="user_name" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <Component id="user_name_login" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -108,7 +108,7 @@
                   <Component id="logintitle" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace pref="71" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="user_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="user_name_login" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -124,10 +124,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="user_name">
+        <Component class="javax.swing.JTextField" name="user_name_login">
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user_nameMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="user_nameActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="user_name_loginMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="user_name_loginActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">

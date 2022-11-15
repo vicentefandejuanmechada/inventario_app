@@ -37,7 +37,7 @@ public class Ingresar_item extends javax.swing.JFrame {
     
     PreparedStatement ps ;
            
- 
+        
    
    
     public Ingresar_item() {

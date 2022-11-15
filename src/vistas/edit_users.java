@@ -44,14 +44,15 @@ public class edit_users extends javax.swing.JFrame {
                Class.forName("org.mariadb.jdbc.Driver");
                cnew = (Connection) DriverManager.getConnection(url,usuario,pass);
                 org.mariadb.jdbc.Statement st = cnew.createStatement();
-                String sql = "SELECT * FROM users ";
+                //String sql = "SELECT * FROM users ";
+                String sql ="SELECT u.id_user, u.nombre_user , u.passw_user, tdu.tipo_de_user, u.e_mail_user   FROM inventario.users u inner join inventario.tipos_de_user tdu on tdu.id_del_tipo_de_user = u.id_del_tipo_de_user;";
                 ResultSet rs = st.executeQuery(sql);
                 while(rs.next()){
-                   String iduser = String.valueOf(rs.getInt("id_user"));
-                   String idtipouser = String.valueOf(rs.getInt("users.id_del_tipo_de_user"));
-                   String username = rs.getString("nombre_user");
-                   String userpassw = rs.getString("passw_user");
-                   String mailuser = rs.getString("e_mail_user");
+                   String iduser = String.valueOf(rs.getInt("u.id_user"));
+                   String idtipouser = rs.getString("tipo_de_user");
+                   String username = rs.getString("u.nombre_user");
+                   String userpassw = rs.getString("u.passw_user");
+                   String mailuser = rs.getString("u.e_mail_user");
                 
                   String tabladb [] = {iduser,idtipouser,username,userpassw,mailuser};
                    DefaultTableModel tableModel =(DefaultTableModel)tableuser.getModel();
@@ -160,7 +161,7 @@ public class edit_users extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID de usuario", "ID tipo de user", "Username", "Contraseña", "e-mail"
+                "ID de usuario", "Tipo de user", "Username", "Contraseña", "e-mail"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -225,7 +226,7 @@ public class edit_users extends javax.swing.JFrame {
                                         .addGap(15, 15, 15)))))
                         .addGap(51, 51, 51))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
@@ -251,7 +252,7 @@ public class edit_users extends javax.swing.JFrame {
                     .addComponent(btn_eliminar_user))
                 .addGap(27, 27, 27)
                 .addComponent(edit_btn_user)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
