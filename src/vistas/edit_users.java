@@ -140,6 +140,11 @@ public class edit_users extends javax.swing.JFrame {
         });
 
         edit_btn_user.setText("Editar usuario");
+        edit_btn_user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit_btn_userMouseClicked(evt);
+            }
+        });
 
         id_txtuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,9 +232,9 @@ public class edit_users extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(39, 39, 39)
                 .addComponent(txtedituser, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(username_editxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -254,9 +259,9 @@ public class edit_users extends javax.swing.JFrame {
         jMenu3.setText("File");
 
         volverbtn.setText("volver");
-        volverbtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                volverbtnMouseClicked(evt);
+        volverbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverbtnActionPerformed(evt);
             }
         });
         jMenu3.add(volverbtn);
@@ -285,12 +290,6 @@ public class edit_users extends javax.swing.JFrame {
     private void id_txtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_txtuserActionPerformed
         
     }//GEN-LAST:event_id_txtuserActionPerformed
-
-    private void volverbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverbtnMouseClicked
-        crear_user_iniciado gn = new crear_user_iniciado();
-        gn.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_volverbtnMouseClicked
 
     private void btn_eliminar_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminar_userMouseClicked
         if(!"".equals(id_txtuser.getText()) ){
@@ -325,6 +324,32 @@ public class edit_users extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_tableuserMouseClicked
+
+    private void volverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverbtnActionPerformed
+           crear_user_iniciado gn = new crear_user_iniciado();
+        gn.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_volverbtnActionPerformed
+
+    private void edit_btn_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_btn_userMouseClicked
+        
+        
+        try {
+            conn = (Connection) cn.getConn();
+            String newusername = username_editxt.getText();
+            String passwuser = userpass_editxt2.getText();
+            String mailuser = usermailtxt.getText();
+            String iduser = id_txtuser.getText();
+            String sql ="UPDATE users SET nombre_user='"+newusername+"',passw_user='"+passwuser+"',e_mail_user='"+mailuser+"' WHERE id_user='"+iduser+"'";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.executeUpdate();
+            System.out.println("        funciono la edicion");
+            CargarTabla();
+        } catch (SQLException e) {
+            System.out.println("    no funciono la edicion");
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_edit_btn_userMouseClicked
 
     /**
      * @param args the command line arguments

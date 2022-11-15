@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package vistas;
-
+import java.util.Date;
 
 /**
  *
@@ -36,8 +36,9 @@ public class Inicio_app extends javax.swing.JFrame {
         vender_prod = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        editar_user = new javax.swing.JButton();
+        editar_prod = new javax.swing.JButton();
         crear_user2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -89,21 +90,30 @@ public class Inicio_app extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 0, 51));
-        jButton3.setText("Salir");
+        jButton3.setText("Terminar el turno");
 
-        editar_user.setBackground(new java.awt.Color(0, 0, 0));
-        editar_user.setLabel("editar/eliminar usuario");
-        editar_user.addActionListener(new java.awt.event.ActionListener() {
+        editar_prod.setBackground(new java.awt.Color(0, 0, 0));
+        editar_prod.setForeground(new java.awt.Color(255, 255, 255));
+        editar_prod.setText("editar/eliminar producto");
+        editar_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editar_userActionPerformed(evt);
+                editar_prodActionPerformed(evt);
             }
         });
 
         crear_user2.setBackground(new java.awt.Color(0, 0, 0));
+        crear_user2.setForeground(new java.awt.Color(255, 255, 255));
         crear_user2.setText("Crear usuario");
         crear_user2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 crear_user2MouseClicked(evt);
+            }
+        });
+
+        jButton1.setText("obten fecha");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
         });
 
@@ -112,26 +122,31 @@ public class Inicio_app extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ingresar_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(vender_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(editar_user)
+                .addComponent(editar_prod)
                 .addGap(121, 121, 121)
                 .addComponent(crear_user2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(96, 96, 96))
+                .addGap(35, 35, 35))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ingresar_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(111, 111, 111)
+                                .addComponent(vender_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,10 +161,12 @@ public class Inicio_app extends javax.swing.JFrame {
                         .addComponent(ingresar_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addGap(78, 78, 78)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(editar_user)
+                    .addComponent(editar_prod)
                     .addComponent(crear_user2))
                 .addGap(39, 39, 39))
         );
@@ -180,17 +197,24 @@ public class Inicio_app extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_crear_user2MouseClicked
 
-    private void editar_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_userActionPerformed
+    private void editar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_prodActionPerformed
         editar_eliminar GN = new editar_eliminar();
         GN.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_editar_userActionPerformed
+    }//GEN-LAST:event_editar_prodActionPerformed
 
     private void vender_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vender_prodMouseClicked
       Ventas GN = new Ventas();
       GN.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_vender_prodMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Date fecha = new Date();
+        System.out.println(fecha);
+      
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,8 +253,9 @@ public class Inicio_app extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crear_user2;
-    private javax.swing.JButton editar_user;
+    private javax.swing.JButton editar_prod;
     private javax.swing.JButton ingresar_prod;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
