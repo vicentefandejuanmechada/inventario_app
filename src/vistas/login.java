@@ -36,7 +36,7 @@ public class login extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         fondo_login = new javax.swing.JPanel();
-        user_name = new javax.swing.JTextField();
+        user_name_login = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         contra_tx = new javax.swing.JPasswordField();
@@ -60,14 +60,14 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        user_name.addMouseListener(new java.awt.event.MouseAdapter() {
+        user_name_login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                user_nameMouseClicked(evt);
+                user_name_loginMouseClicked(evt);
             }
         });
-        user_name.addActionListener(new java.awt.event.ActionListener() {
+        user_name_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                user_nameActionPerformed(evt);
+                user_name_loginActionPerformed(evt);
             }
         });
 
@@ -122,7 +122,7 @@ public class login extends javax.swing.JFrame {
                             .addComponent(logintitle, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(contra_tx)
-                                .addComponent(user_name, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(user_name_login, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondo_loginLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
@@ -136,7 +136,7 @@ public class login extends javax.swing.JFrame {
                 .addComponent(logintitle, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(user_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user_name_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(35, 35, 35)
                 .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -165,14 +165,14 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void user_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_nameActionPerformed
+    private void user_name_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_name_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_user_nameActionPerformed
+    }//GEN-LAST:event_user_name_loginActionPerformed
 
-    private void user_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user_nameMouseClicked
+    private void user_name_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user_name_loginMouseClicked
         
   
-    }//GEN-LAST:event_user_nameMouseClicked
+    }//GEN-LAST:event_user_name_loginMouseClicked
 
     private void contra_txActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contra_txActionPerformed
         // TODO add your handling code here:
@@ -183,7 +183,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_fondo_loginAncestorAdded
 
     private void iniciar_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_sesionMouseClicked
-      String user = user_name.getText();
+      String user = user_name_login.getText();
       String contra = contra_tx.getText();
       
       if (user.equals("") && contra.equals("")){
@@ -246,6 +246,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel logintitle;
-    private javax.swing.JTextField user_name;
+    private javax.swing.JTextField user_name_login;
     // End of variables declaration//GEN-END:variables
 }

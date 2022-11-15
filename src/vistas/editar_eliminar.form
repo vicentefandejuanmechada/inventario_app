@@ -260,12 +260,12 @@
                           <Component id="descripcion_edit_txt" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel11" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <Component id="ideliminar" min="-2" pref="109" max="-2" attributes="0"/>
                           <Component id="eliminarprodbt" min="-2" pref="109" max="-2" attributes="0"/>
-                          <Component id="merma_btn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="merma_btn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
                   </Group>
