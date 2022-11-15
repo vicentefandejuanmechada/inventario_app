@@ -214,7 +214,7 @@ public class crear_user_iniciado extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void volver_a_inicio_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver_a_inicio_btnActionPerformed
-          Inicio_app nw = new Inicio_app();
+          inicio_administrador nw = new inicio_administrador();
        nw.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_volver_a_inicio_btnActionPerformed

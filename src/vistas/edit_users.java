@@ -326,7 +326,7 @@ public class edit_users extends javax.swing.JFrame {
     }//GEN-LAST:event_tableuserMouseClicked
 
     private void volverbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverbtnActionPerformed
-           crear_user_iniciado gn = new crear_user_iniciado();
+           inicio_administrador gn = new inicio_administrador();
         gn.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverbtnActionPerformed

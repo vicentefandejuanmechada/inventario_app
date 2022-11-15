@@ -37,7 +37,7 @@ public class Inicio_app extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         editar_prod = new javax.swing.JButton();
-        crear_user2 = new javax.swing.JButton();
+        modo_admin = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -101,12 +101,12 @@ public class Inicio_app extends javax.swing.JFrame {
             }
         });
 
-        crear_user2.setBackground(new java.awt.Color(0, 0, 0));
-        crear_user2.setForeground(new java.awt.Color(255, 255, 255));
-        crear_user2.setText("Crear usuario");
-        crear_user2.addMouseListener(new java.awt.event.MouseAdapter() {
+        modo_admin.setBackground(new java.awt.Color(0, 0, 0));
+        modo_admin.setForeground(new java.awt.Color(255, 255, 255));
+        modo_admin.setText("Modo Administrador");
+        modo_admin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                crear_user2MouseClicked(evt);
+                modo_adminMouseClicked(evt);
             }
         });
 
@@ -121,14 +121,6 @@ public class Inicio_app extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(editar_prod)
-                .addGap(121, 121, 121)
-                .addComponent(crear_user2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(35, 35, 35))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -147,6 +139,14 @@ public class Inicio_app extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(editar_prod)
+                .addGap(87, 87, 87)
+                .addComponent(modo_admin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(35, 35, 35))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,14 +161,14 @@ public class Inicio_app extends javax.swing.JFrame {
                         .addComponent(ingresar_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)))
-                .addGap(78, 78, 78)
+                .addGap(68, 68, 68)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(editar_prod)
-                    .addComponent(crear_user2))
-                .addGap(39, 39, 39))
+                    .addComponent(modo_admin))
+                .addGap(72, 72, 72))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,11 +191,11 @@ public class Inicio_app extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_ingresar_prodActionPerformed
 
-    private void crear_user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_user2MouseClicked
-      crear_user_iniciado GN = new crear_user_iniciado();
+    private void modo_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modo_adminMouseClicked
+      inicio_administrador GN = new inicio_administrador();
        GN.setVisible(true);
        this.dispose();
-    }//GEN-LAST:event_crear_user2MouseClicked
+    }//GEN-LAST:event_modo_adminMouseClicked
 
     private void editar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_prodActionPerformed
         editar_eliminar GN = new editar_eliminar();
@@ -252,7 +252,6 @@ public class Inicio_app extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton crear_user2;
     private javax.swing.JButton editar_prod;
     private javax.swing.JButton ingresar_prod;
     private javax.swing.JButton jButton1;
@@ -262,6 +261,7 @@ public class Inicio_app extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton modo_admin;
     private javax.swing.JButton vender_prod;
     // End of variables declaration//GEN-END:variables
 }
