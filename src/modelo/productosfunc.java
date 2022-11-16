@@ -25,6 +25,7 @@ public class productosfunc {
             ps.setString(5, pro.getFecha_vencimiento());
             ps.setString(6, pro.getDescripcion());
             ps.execute();
+            
             return true;
         }catch(SQLException e){
             System.out.println(e.toString());
