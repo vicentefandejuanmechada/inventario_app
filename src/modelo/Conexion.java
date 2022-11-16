@@ -23,14 +23,15 @@ public class Conexion {
           Class.forName(clase);
           conn = DriverManager.getConnection(url,usuario,pass);
           System.out.print("conexion correcta");
-          
+          return conn;
          
         
       }catch(ClassNotFoundException e){
           System.err.println("conexion incorrecta");
           System.err.println(e);
+          return null;
       }
-      return conn;
+      //return conn;
       }
 
     
