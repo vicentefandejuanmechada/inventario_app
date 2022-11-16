@@ -197,7 +197,7 @@ public class Inicio_app extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresar_prodActionPerformed
 
     private void modo_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modo_adminMouseClicked
-      inicio_administrador GN = new inicio_administrador();
+      validar_admin_login GN = new validar_admin_login();
        GN.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_modo_adminMouseClicked
