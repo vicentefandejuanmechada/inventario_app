@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import vistas.*;
 
 /**
  *
@@ -19,6 +20,7 @@ public class user_func {
     Conexion cn = new Conexion();
     PreparedStatement ps;
     ResultSet rs;
+    usuarios us = new usuarios();
     
     public boolean InsertarUser(usuarios us){
         String sql="INSERT INTO users (id_del_tipo_de_user ,nombre_user,passw_user,e_mail_user) values(?,?,?,?)";
@@ -57,4 +59,24 @@ public class user_func {
         return false;
         }
         }
+    
+    
+    
+    public usuarios log(String nombre_user, String passw_user){
+        String sql = "SELECT * from users WHERE nombre_user=? and  passw_user=? and id_del_tipo_de_user = 1";
+        try {
+            conn = cn.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,nombre_user);
+            ps.setString(2,passw_user);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                us.setNombre_user(rs.getString("nombre_user"));
+                us.setPassw_user(rs.getString("passw_user"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return us;
+    }
 }
