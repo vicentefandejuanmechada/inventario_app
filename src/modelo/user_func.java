@@ -21,7 +21,7 @@ public class user_func {
     PreparedStatement ps;
     ResultSet rs;
     usuarios us = new usuarios();
-    
+    //metodo q inserta usuarios
     public boolean InsertarUser(usuarios us){
         String sql="INSERT INTO users (id_del_tipo_de_user ,nombre_user,passw_user,e_mail_user) values(?,?,?,?)";
         
@@ -42,7 +42,7 @@ public class user_func {
         return false;
     }
     
-    
+    //metodo q elimina cualquier usuario cual su tipo de id sea = 2 
     public boolean Eliminaruser(int id_user){
         String sql= "DELETE FROM users WHERE id_user=? and users.id_del_tipo_de_user=2";
         try {
@@ -60,7 +60,7 @@ public class user_func {
         }
         }
     
-    
+    //metodo que seleciona todo los usuarios que tengan el id de tipo de user = 1
     
     public usuarios log(String nombre_user, String passw_user){
         String sql = "SELECT * from users WHERE nombre_user=? and  passw_user=? and id_del_tipo_de_user = 1";
