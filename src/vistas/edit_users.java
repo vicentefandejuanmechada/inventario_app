@@ -147,12 +147,6 @@ public class edit_users extends javax.swing.JFrame {
             }
         });
 
-        id_txtuser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_txtuserActionPerformed(evt);
-            }
-        });
-
         tableuser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -287,10 +281,6 @@ public class edit_users extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void id_txtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_txtuserActionPerformed
-        
-    }//GEN-LAST:event_id_txtuserActionPerformed
 
     private void btn_eliminar_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminar_userMouseClicked
         if(!"".equals(id_txtuser.getText()) ){
