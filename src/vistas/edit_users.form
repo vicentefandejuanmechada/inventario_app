@@ -228,9 +228,6 @@
         <Component class="javax.swing.JTextField" name="username_editxt">
         </Component>
         <Component class="javax.swing.JTextField" name="id_txtuser">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_txtuserActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="usermailtxt">
         </Component>
