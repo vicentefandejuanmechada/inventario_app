@@ -79,4 +79,21 @@ public class user_func {
         }
         return us;
     }
+     public usuarios logu(String nombre_user, String passw_user){
+        String sql = "SELECT * from users WHERE nombre_user=? and  passw_user=?";
+        try {
+            conn = cn.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,nombre_user);
+            ps.setString(2,passw_user);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                us.setNombre_user(rs.getString("nombre_user"));
+                us.setPassw_user(rs.getString("passw_user"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return us;
+    }
 }
