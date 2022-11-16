@@ -23,7 +23,7 @@ public class Conexion {
           Class.forName(clase);
           conn = DriverManager.getConnection(url,usuario,pass);
           System.out.print("conexion correcta");
-          return conn;
+    
          
         
       }catch(ClassNotFoundException e){
@@ -31,7 +31,7 @@ public class Conexion {
           System.err.println(e);
           return null;
       }
-      //return conn;
+      return conn;
       }
 
     
