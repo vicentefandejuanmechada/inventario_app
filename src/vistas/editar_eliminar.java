@@ -554,7 +554,7 @@ public class editar_eliminar extends javax.swing.JFrame {
              String nombre_edit = name_prod_editxt.getText();
              String precio_edit = precioedit_txt.getText();
              String cantidad_edit = cantidadprod_editxt.getText();
-             String fechavenci = fechavencimiento_edit_txt.getName();
+             String fechavenci = fechavencimiento_edit_txt.getText();
              String descrip_edit = descripcion_edit_txt.getText();
              String sql = "UPDATE productos SET orden_producto='"+nu_orden_edit+"', nombre_producto='"+nombre_edit+"', precio_prod='"+precio_edit+"', cantidad_producto='"+cantidad_edit+"', fecha_vencimiento='"+fechavenci+"', descripcion='"+descrip_edit+"'  WHERE id='"+id_captura_edit+"'";
              PreparedStatement pstm = conn.prepareStatement(sql);
