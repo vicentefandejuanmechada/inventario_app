@@ -139,9 +139,9 @@ public class editar_eliminar extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         descripcion_edit_txt = new javax.swing.JTextField();
-        buscar_prod_btn = new javax.swing.JButton();
         merma_btn = new javax.swing.JButton();
         idlabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
         Volver_a_home_editdelete = new javax.swing.JCheckBoxMenuItem();
@@ -291,13 +291,6 @@ public class editar_eliminar extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Descripcion");
 
-        buscar_prod_btn.setText("Buscar producto");
-        buscar_prod_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buscar_prod_btnMouseClicked(evt);
-            }
-        });
-
         merma_btn.setText("mermar producto");
         merma_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -309,6 +302,8 @@ public class editar_eliminar extends javax.swing.JFrame {
         idlabel.setText("-");
         idlabel.setMaximumSize(new java.awt.Dimension(7, 16));
         idlabel.setMinimumSize(new java.awt.Dimension(7, 16));
+
+        jButton1.setText("ver tabla merma");
 
         javax.swing.GroupLayout aLayout = new javax.swing.GroupLayout(a);
         a.setLayout(aLayout);
@@ -324,9 +319,7 @@ public class editar_eliminar extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(aLayout.createSequentialGroup()
                         .addGap(253, 253, 253)
-                        .addComponent(idlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(buscar_prod_btn)))
+                        .addComponent(idlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(137, Short.MAX_VALUE))
             .addGroup(aLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
@@ -351,10 +344,13 @@ public class editar_eliminar extends javax.swing.JFrame {
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(ideliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
                     .addComponent(eliminarprodbt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(merma_btn)
-                    .addComponent(jLabel11))
-                .addGap(175, 175, 175))
+                    .addGroup(aLayout.createSequentialGroup()
+                        .addComponent(merma_btn)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton1)))
+                .addGap(83, 83, 83))
             .addGroup(aLayout.createSequentialGroup()
                 .addGap(204, 204, 204)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,9 +362,7 @@ public class editar_eliminar extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscar_prod_btn)
-                    .addComponent(idlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(idlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(aLayout.createSequentialGroup()
@@ -401,11 +395,12 @@ public class editar_eliminar extends javax.swing.JFrame {
                         .addComponent(eliminarprodbt)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(descripcion_edit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(merma_btn))
+                    .addComponent(merma_btn)
+                    .addComponent(jButton1))
                 .addGap(5, 5, 5)
                 .addComponent(edit_prod_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -482,30 +477,6 @@ public class editar_eliminar extends javax.swing.JFrame {
 
  
     
-    private void buscar_prod_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_prod_btnMouseClicked
-        /*
-           Connection conn = null;
-       try {
-           int id_editprod_txt = TableProd.getSelectedRow();
-           TableProd.getModel().getValueAt(id_editprod_txt,0).toString();
-           //id_editprod_txt();
-           conn = (Connection) cn.getConn();
-           ps = conn.prepareStatement("SELECT orden_producto FROM productos where id ='"+id_editprod_txt+"'");
-           rs = ps.executeQuery();
-           if(rs.next()){
-                String agrega1 =rs.getString("orden_producto");
-                nuorden_editxt.setText(agrega1);
-           
-               
-           }
-        
-       } catch (NumberFormatException | SQLException e) {
-       }
-*/
-
-
-    }//GEN-LAST:event_buscar_prod_btnMouseClicked
-
     private void TableProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProdMouseClicked
        //con esta funcion cuando clickeamos en la tabla se rellenaran los campos a editar
         Connection conn = null;
@@ -631,7 +602,6 @@ public class editar_eliminar extends javax.swing.JFrame {
     private javax.swing.JTable TableProd;
     private javax.swing.JCheckBoxMenuItem Volver_a_home_editdelete;
     private javax.swing.JPanel a;
-    private javax.swing.JButton buscar_prod_btn;
     private javax.swing.JTextField cantidadprod_editxt;
     private javax.swing.JTextField descripcion_edit_txt;
     private javax.swing.JButton edit_prod_btn;
@@ -639,6 +609,7 @@ public class editar_eliminar extends javax.swing.JFrame {
     private javax.swing.JTextField fechavencimiento_edit_txt;
     private javax.swing.JTextField ideliminar;
     private javax.swing.JLabel idlabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
