@@ -51,7 +51,6 @@ public class login extends javax.swing.JFrame {
         iniciar_sesion = new javax.swing.JButton();
         logintitle = new javax.swing.JLabel();
         atajo_btn = new javax.swing.JButton();
-        iniciauser_btn = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -89,13 +88,6 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        iniciauser_btn.setText("Iniciar sesion como usuario");
-        iniciauser_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iniciauser_btnMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout fondo_loginLayout = new javax.swing.GroupLayout(fondo_login);
         fondo_login.setLayout(fondo_loginLayout);
         fondo_loginLayout.setHorizontalGroup(
@@ -107,22 +99,18 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(12, 12, 12))
                     .addGroup(fondo_loginLayout.createSequentialGroup()
-                        .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(fondo_loginLayout.createSequentialGroup()
-                                .addGap(137, 137, 137)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(fondo_loginLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(atajo_btn)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondo_loginLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(atajo_btn)))
                 .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondo_loginLayout.createSequentialGroup()
-                        .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(iniciauser_btn)
-                            .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(contra_tx)
-                                .addComponent(user_name_login, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(182, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(contra_tx)
+                            .addComponent(user_name_login, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(188, Short.MAX_VALUE))
                     .addGroup(fondo_loginLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(iniciar_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +118,7 @@ public class login extends javax.swing.JFrame {
             .addGroup(fondo_loginLayout.createSequentialGroup()
                 .addGap(154, 154, 154)
                 .addComponent(logintitle, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         fondo_loginLayout.setVerticalGroup(
             fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,8 +136,7 @@ public class login extends javax.swing.JFrame {
                 .addGap(87, 87, 87)
                 .addGroup(fondo_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(iniciar_sesion)
-                    .addComponent(atajo_btn)
-                    .addComponent(iniciauser_btn))
+                    .addComponent(atajo_btn))
                 .addGap(31, 31, 31))
         );
 
@@ -175,7 +162,7 @@ public class login extends javax.swing.JFrame {
         String user = user_name_login.getText();
         String contra = contra_tx.getText();
          if (!"".equals(user) || !"".equals(contra)){
-          us = usfun.log(user, contra);
+          us = usfun.logu(user, contra);
           if(us.getNombre_user()!= null && us.getPassw_user() !=null){
               Inicio_app iniad = new Inicio_app();
               iniad.setVisible(true);
@@ -197,13 +184,6 @@ public class login extends javax.swing.JFrame {
              iniap.setVisible(true);
              this.dispose();
     }//GEN-LAST:event_atajo_btnMouseClicked
-
-    private void iniciauser_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciauser_btnMouseClicked
-    iniciauser in = new iniciauser();
-    in.setVisible(true);
-    this.dispose();
-
-    }//GEN-LAST:event_iniciauser_btnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -245,7 +225,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPasswordField contra_tx;
     private javax.swing.JPanel fondo_login;
     private javax.swing.JButton iniciar_sesion;
-    private javax.swing.JButton iniciauser_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
