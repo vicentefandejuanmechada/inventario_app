@@ -156,7 +156,7 @@ public class Inicio_app extends javax.swing.JFrame {
     }//GEN-LAST:event_edit_delete_btnMouseClicked
 
     private void admin_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_btnMouseClicked
-      inicio_administrador ini = new inicio_administrador();
+      validar_admin_login ini = new validar_admin_login();
       ini.setVisible(true);
       this.dispose();
     

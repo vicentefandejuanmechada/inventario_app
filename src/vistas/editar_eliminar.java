@@ -559,6 +559,7 @@ public class editar_eliminar extends javax.swing.JFrame {
                 String sql = "INSERT INTO merma_tabla(nombre_prod_mermado,cantidad_productos_mermados,precio_prod_mermados,id_producto) Values ('"+nombre_merma+"','"+cantidad_a_mermar+"','"+resultado_cantidadxprecio+"','"+id_prod+"')";
                 PreparedStatement pss = conn.prepareStatement(sql);
                 System.out.println("        Funciono el ingreso a tabla merma ");
+                JOptionPane.showMessageDialog(null,"mermo un producto");
                 System.out.println(resultado_cantidadxprecio);
                 pss.execute();
                 
