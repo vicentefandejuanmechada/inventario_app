@@ -9,12 +9,12 @@ package vistas;
  *
  * @author admin1
  */
-public class Inicio_app extends javax.swing.JFrame {
+public class Inicio_user extends javax.swing.JFrame {
 
     /**
-     * Creates new form Inicio_app
+     * Creates new form Inicio_user
      */
-    public Inicio_app() {
+    public Inicio_user() {
         initComponents();
     }
 
@@ -32,7 +32,6 @@ public class Inicio_app extends javax.swing.JFrame {
         ventas_btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        admin_btn = new javax.swing.JButton();
         edit_delete_btn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -61,13 +60,6 @@ public class Inicio_app extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ventas");
 
-        admin_btn.setText("administrar");
-        admin_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                admin_btnMouseClicked(evt);
-            }
-        });
-
         edit_delete_btn.setText("editar/eliminar productos");
         edit_delete_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,13 +85,11 @@ public class Inicio_app extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(edit_delete_btn)
-                .addGap(42, 42, 42)
-                .addComponent(admin_btn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(73, 73, 73))
         );
@@ -116,7 +106,6 @@ public class Inicio_app extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(admin_btn)
                     .addComponent(edit_delete_btn)
                     .addComponent(jButton4))
                 .addGap(52, 52, 52))
@@ -146,25 +135,18 @@ public class Inicio_app extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_crear_btn_prodMouseClicked
 
-    private void edit_delete_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_delete_btnMouseClicked
-        editar_eliminar ed = new editar_eliminar();
-        ed.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_edit_delete_btnMouseClicked
-
-    private void admin_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admin_btnMouseClicked
-      inicio_administrador ini = new inicio_administrador();
-      ini.setVisible(true);
-      this.dispose();
-    
-    }//GEN-LAST:event_admin_btnMouseClicked
-
     private void ventas_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventas_btnMouseClicked
         Ventas sell = new Ventas();
         sell.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ventas_btnMouseClicked
+
+    private void edit_delete_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_delete_btnMouseClicked
+        editar_eliminar ed = new editar_eliminar();
+        ed.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_edit_delete_btnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,26 +165,25 @@ public class Inicio_app extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio_app.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio_app.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio_app.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio_app.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio_app().setVisible(true);
+                new Inicio_user().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton admin_btn;
     private javax.swing.JButton crear_btn_prod;
     private javax.swing.JButton edit_delete_btn;
     private javax.swing.JButton jButton4;
