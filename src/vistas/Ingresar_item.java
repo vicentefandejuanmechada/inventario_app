@@ -276,11 +276,6 @@ public class Ingresar_item extends javax.swing.JFrame {
 
         Volver_a_inicio.setSelected(true);
         Volver_a_inicio.setText("Volver");
-        Volver_a_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Volver_a_inicioMouseClicked(evt);
-            }
-        });
         Volver_a_inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Volver_a_inicioActionPerformed(evt);
@@ -320,10 +315,6 @@ public class Ingresar_item extends javax.swing.JFrame {
  
         this.dispose();
     }//GEN-LAST:event_Volver_a_inicioActionPerformed
-
-    private void Volver_a_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Volver_a_inicioMouseClicked
-       
-    }//GEN-LAST:event_Volver_a_inicioMouseClicked
 
     private void actualizar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_btnActionPerformed
        // DefaultTableModel tableModel =(DefaultTableModel)tabladatosprod.getModel();
