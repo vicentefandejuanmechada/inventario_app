@@ -286,7 +286,7 @@ public class editar_eliminar extends javax.swing.JFrame {
         jLabel12.setText("Nu identificador");
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("ID de producto que desea editar");
+        jLabel13.setText("ID de producto que desea actualizar y editar");
 
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Descripcion");
@@ -304,6 +304,11 @@ public class editar_eliminar extends javax.swing.JFrame {
         idlabel.setMinimumSize(new java.awt.Dimension(7, 16));
 
         jButton1.setText("ver tabla merma");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout aLayout = new javax.swing.GroupLayout(a);
         a.setLayout(aLayout);
@@ -562,6 +567,13 @@ public class editar_eliminar extends javax.swing.JFrame {
         }
                 // TODO add your handling code here:
     }//GEN-LAST:event_merma_btnMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        tabla_merma tbm = new tabla_merma();
+        tbm.setVisible(true);
+       
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
