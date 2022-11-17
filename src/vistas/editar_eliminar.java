@@ -320,7 +320,7 @@ public class editar_eliminar extends javax.swing.JFrame {
                     .addGroup(aLayout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(idlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(aLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
