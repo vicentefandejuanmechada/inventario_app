@@ -19,6 +19,9 @@ import modelo.productosfunc;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Driver;
 import java.sql.*;
+import java.util.HashSet;
+import modelo.Acciones;
+import modelo.accion_func;
 
 /**
  *
@@ -33,6 +36,8 @@ public class editar_eliminar extends javax.swing.JFrame {
    Connection conn;
     Conexion cn = new Conexion();
     PreparedStatement ps;
+    Acciones ac= new Acciones();
+    accion_func accfun = new accion_func();
     ResultSet rs;
     /**
      * Creates new form editar_eliminar
@@ -142,6 +147,8 @@ public class editar_eliminar extends javax.swing.JFrame {
         merma_btn = new javax.swing.JButton();
         idlabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        restar_producto = new javax.swing.JToggleButton();
+        agregarprodts = new javax.swing.JButton();
         jMenuBar4 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
         Volver_a_home_editdelete = new javax.swing.JCheckBoxMenuItem();
@@ -310,6 +317,20 @@ public class editar_eliminar extends javax.swing.JFrame {
             }
         });
 
+        restar_producto.setText("sacar productos");
+        restar_producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restar_productoActionPerformed(evt);
+            }
+        });
+
+        agregarprodts.setText("agregar productos");
+        agregarprodts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarprodtsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout aLayout = new javax.swing.GroupLayout(a);
         a.setLayout(aLayout);
         aLayout.setHorizontalGroup(
@@ -349,12 +370,16 @@ public class editar_eliminar extends javax.swing.JFrame {
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(ideliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
                     .addComponent(eliminarprodbt, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(aLayout.createSequentialGroup()
-                        .addComponent(merma_btn)
+                        .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(merma_btn)
+                            .addComponent(jLabel11))
                         .addGap(27, 27, 27)
-                        .addComponent(jButton1)))
+                        .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(restar_producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(agregarprodts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(83, 83, 83))
             .addGroup(aLayout.createSequentialGroup()
                 .addGap(204, 204, 204)
@@ -386,21 +411,29 @@ public class editar_eliminar extends javax.swing.JFrame {
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(aLayout.createSequentialGroup()
                         .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cantidadprod_editxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(precioedit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(eliminarprodbt)
+                            .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cantidadprod_editxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fechavencimiento_edit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
+                        .addComponent(jLabel11))
                     .addGroup(aLayout.createSequentialGroup()
-                        .addComponent(eliminarprodbt)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)))
-                .addGap(18, 18, 18)
+                        .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(aLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(agregarprodts)
+                                .addGap(16, 16, 16))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(precioedit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)))
+                        .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(aLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(fechavencimiento_edit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)))
+                            .addComponent(restar_producto))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(aLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(descripcion_edit_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -532,11 +565,22 @@ public class editar_eliminar extends javax.swing.JFrame {
              String cantidad_edit = cantidadprod_editxt.getText();
              String fechavenci = fechavencimiento_edit_txt.getText();
              String descrip_edit = descripcion_edit_txt.getText();
-             String sql = "UPDATE productos SET orden_producto='"+nu_orden_edit+"', nombre_producto='"+nombre_edit+"', precio_prod='"+precio_edit+"', cantidad_producto='"+cantidad_edit+"', fecha_vencimiento='"+fechavenci+"', descripcion='"+descrip_edit+"'  WHERE id='"+id_captura_edit+"'";
+             String sql = "UPDATE productos SET orden_producto='"+nu_orden_edit+"', nombre_producto='"+nombre_edit+"', precio_prod='"+precio_edit+"', fecha_vencimiento='"+fechavenci+"', descripcion='"+descrip_edit+"'  WHERE id='"+id_captura_edit+"'";
              PreparedStatement pstm = conn.prepareStatement(sql);
 
+             
+             
              pstm.executeUpdate();
              System.out.println("Funciono la edicion");
+             if(!"".equals(name_prod_editxt.getText()) || !"".equals(idlabel.getText())){
+                 ac.setAccion("Se edito un producto");
+                 ac.setDescripcion_de_accion("Se edito un producto");
+                 ac.setObjeto_manipulado(name_prod_editxt.getText());
+                 ac.setCantidad_manipulada(Integer.parseInt(cantidadprod_editxt.getText()));
+                 accfun.RestarProd(ac);
+             }
+             
+             
              CargarTabla();
              conn.close();
         } catch (Exception e) {
@@ -558,6 +602,22 @@ public class editar_eliminar extends javax.swing.JFrame {
                 
                 String sql = "INSERT INTO merma_tabla(nombre_prod_mermado,cantidad_productos_mermados,precio_prod_mermados,id_producto) Values ('"+nombre_merma+"','"+cantidad_a_mermar+"','"+resultado_cantidadxprecio+"','"+id_prod+"')";
                 PreparedStatement pss = conn.prepareStatement(sql);
+                
+                if (!"".equals(cantidadprod_editxt.getText())){
+                    String sqll="UPDATE productos SET  cantidad_producto=cantidad_producto -'"+cantidad_a_mermar+"'  WHERE id='"+id_prod+"'";
+                       PreparedStatement pstm = conn.prepareStatement(sqll);   
+                        pstm.executeUpdate();
+                         if(!"".equals(cantidadprod_editxt.getText() )|| !"".equals(name_prod_editxt.getText())){
+                 ac.setAccion("Se mermo un producto");
+                 ac.setDescripcion_de_accion("Se mermo una cantidad de productos");
+                 ac.setObjeto_manipulado(name_prod_editxt.getText());
+                 ac.setCantidad_manipulada(Integer.parseInt(cantidadprod_editxt.getText()));
+                 accfun.RestarProd(ac);
+             }
+             
+                        CargarTabla();
+                    
+                }
                 System.out.println("        Funciono el ingreso a tabla merma ");
                 JOptionPane.showMessageDialog(null,"mermo un producto");
                 System.out.println(resultado_cantidadxprecio);
@@ -575,6 +635,69 @@ public class editar_eliminar extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void restar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restar_productoActionPerformed
+      try {
+            conn = (Connection) cn.getConn();
+             
+             
+            
+             String id_captura_edit = idlabel.getText();
+       
+             String cantidad_edit = cantidadprod_editxt.getText();
+           
+             String sql = "UPDATE productos SET  cantidad_producto=cantidad_producto -'"+cantidad_edit+"'  WHERE id='"+id_captura_edit+"'";
+             PreparedStatement pstm = conn.prepareStatement(sql);   
+             pstm.executeUpdate();
+             System.out.println("Funciono la edicion");
+             if(!"".equals(cantidadprod_editxt.getText() )|| !"".equals(name_prod_editxt.getText())){
+                 ac.setAccion("Restar producto");
+                 ac.setDescripcion_de_accion("Se resto una cantidad de un producto");
+                 ac.setObjeto_manipulado(name_prod_editxt.getText());
+                 ac.setCantidad_manipulada(Integer.parseInt(cantidadprod_editxt.getText()));
+                 accfun.RestarProd(ac);
+             }
+             
+             
+             CargarTabla();
+             conn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+    }//GEN-LAST:event_restar_productoActionPerformed
+
+    private void agregarprodtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarprodtsActionPerformed
+        try {
+            conn = (Connection) cn.getConn();
+             
+             
+            
+             String id_captura_edit = idlabel.getText();
+       
+             String cantidad_edit = cantidadprod_editxt.getText();
+           
+             String sql = "UPDATE productos SET  cantidad_producto=cantidad_producto +'"+cantidad_edit+"'  WHERE id='"+id_captura_edit+"'";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+
+             pstm.executeUpdate();
+             if(!"".equals(cantidadprod_editxt.getText() )|| !"".equals(name_prod_editxt.getText())){
+                 ac.setAccion("Sumar producto");
+                 ac.setDescripcion_de_accion("Se sumo una cantidad de un producto");
+                 ac.setObjeto_manipulado(name_prod_editxt.getText());
+                 ac.setCantidad_manipulada(Integer.parseInt(cantidadprod_editxt.getText()));
+                 accfun.RestarProd(ac);
+             }
+             
+             System.out.println("Funciono la edicion");
+             CargarTabla();
+             conn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_agregarprodtsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -615,6 +738,7 @@ public class editar_eliminar extends javax.swing.JFrame {
     private javax.swing.JTable TableProd;
     private javax.swing.JCheckBoxMenuItem Volver_a_home_editdelete;
     private javax.swing.JPanel a;
+    private javax.swing.JButton agregarprodts;
     private javax.swing.JTextField cantidadprod_editxt;
     private javax.swing.JTextField descripcion_edit_txt;
     private javax.swing.JButton edit_prod_btn;
@@ -662,6 +786,7 @@ public class editar_eliminar extends javax.swing.JFrame {
     private javax.swing.JTextField name_prod_editxt;
     private javax.swing.JTextField nuorden_editxt;
     private javax.swing.JTextField precioedit_txt;
+    private javax.swing.JToggleButton restar_producto;
     // End of variables declaration//GEN-END:variables
 
 

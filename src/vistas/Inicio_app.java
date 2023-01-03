@@ -163,7 +163,7 @@ public class Inicio_app extends javax.swing.JFrame {
     }//GEN-LAST:event_admin_btnMouseClicked
 
     private void ventas_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventas_btnMouseClicked
-        Ventas sell = new Ventas();
+        Ventasvista sell = new Ventasvista();
         sell.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ventas_btnMouseClicked

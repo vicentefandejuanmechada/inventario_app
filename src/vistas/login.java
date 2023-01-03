@@ -12,7 +12,9 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import modelo.Acciones;
 import modelo.Conexion;
+import modelo.accion_func;
 import modelo.user_func;
 import modelo.usuarios;
 import org.mariadb.jdbc.Connection;
@@ -28,6 +30,8 @@ public class login extends javax.swing.JFrame {
     user_func usfun = new user_func();
     PreparedStatement ps ;
        ResultSet rs;
+         Acciones ac= new Acciones();
+    accion_func accfun = new accion_func();
     public login() {
         initComponents();
     }
@@ -164,6 +168,16 @@ public class login extends javax.swing.JFrame {
          if (!"".equals(user) || !"".equals(contra)){
           us = usfun.logu(user, contra);
           if(us.getNombre_user()!= null && us.getPassw_user() !=null){
+              
+               if(!"".equals(user_name_login.getText() )|| !"".equals(contra_tx.getText())){
+                 ac.setAccion("Se inicio sesion");
+                 ac.setDescripcion_de_accion("Un usuario inicio sesion");
+                 ac.setObjeto_manipulado(user_name_login.getText());
+                 ac.setCantidad_manipulada(0);
+                 accfun.RestarProd(ac);
+             }
+              
+              
               Inicio_app iniad = new Inicio_app();
               iniad.setVisible(true);
               this.dispose();

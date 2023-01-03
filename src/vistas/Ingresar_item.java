@@ -22,6 +22,8 @@ import modelo.productosfunc;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Driver;
 import java.sql.*;
+import modelo.Acciones;
+import modelo.accion_func;
 
 /**
  *
@@ -34,6 +36,8 @@ public class Ingresar_item extends javax.swing.JFrame {
    productosfunc proFunc = new productosfunc();
    //llama funcion conectar 
     Conexion conn = new Conexion();
+        Acciones ac= new Acciones();
+    accion_func accfun = new accion_func();
     
     PreparedStatement ps ;
            
@@ -339,7 +343,15 @@ public class Ingresar_item extends javax.swing.JFrame {
             pro.setFecha_vencimiento(fecha_vencimiento.getText());
             pro.setDescripcion(descripciontxt.getText());
             proFunc.InsertarProd(pro);
-
+            
+             if(!"".equals(nombre_prod.getText() )|| !"".equals(cantidad_prod.getText())){
+                 ac.setAccion("Se Ingreso un producto");
+                 ac.setDescripcion_de_accion("Se ingreso un nuevo producto a la base de dato");
+                 ac.setObjeto_manipulado(nombre_prod.getText());
+                 ac.setCantidad_manipulada(Integer.parseInt(cantidad_prod.getText()));
+                 accfun.RestarProd(ac);
+             }
+               CargarTabla();
         }else{
             JOptionPane.showMessageDialog(null,"Porfavor rellene los campos");
         }

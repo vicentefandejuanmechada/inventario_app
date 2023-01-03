@@ -11,16 +11,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Acciones;
 import modelo.Conexion;
 import modelo.Producto;
 import modelo.productosfunc;
+import modelo.Ventas;
+import modelo.accion_func;
+import modelo.ventasfunc;
 import org.mariadb.jdbc.Connection;
 
 /**
  *
  * @author admin1
  */
-public class Ventas extends javax.swing.JFrame {
+public class Ventasvista extends javax.swing.JFrame {
 Producto pro = new Producto();
    //llama a la productosfunc para llamar sus sentencias como el insert
    productosfunc proFunc = new productosfunc();
@@ -29,10 +33,14 @@ Producto pro = new Producto();
     Conexion cn = new Conexion();
     PreparedStatement ps;
     ResultSet rs;
+    Ventas vs = new Ventas();
+    ventasfunc vsfc = new ventasfunc();
+       Acciones ac= new Acciones();
+    accion_func accfun = new accion_func();
     /**
      * Creates new form Ventas
      */
-    public Ventas() {
+    public Ventasvista() {
         initComponents();
         CargarTabla();
     }
@@ -104,7 +112,8 @@ Producto pro = new Producto();
                 String agrega5 =rs.getString("cantidad_producto");
                 cantidad_prod_form_ventatxt.setText(agrega5);
               
-                
+                String agrega4 = rs.getString("precio_prod");
+                precio_lbl.setText(agrega4);
                 
                 
             }
@@ -136,9 +145,12 @@ Producto pro = new Producto();
         jButton3 = new javax.swing.JButton();
         nombre_ventasformstx = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        precio_lbl = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tabla_bts = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        volver_btn = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,9 +205,27 @@ Producto pro = new Producto();
         jLabel2.setText("Cantidad de productos");
 
         jButton3.setText("Realizar venta");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre producto");
+
+        precio_lbl.setForeground(new java.awt.Color(0, 0, 0));
+        precio_lbl.setText("0");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Precio");
+
+        tabla_bts.setText("tabla ventas");
+        tabla_bts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tabla_btsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CantidadLayout = new javax.swing.GroupLayout(Cantidad);
         Cantidad.setLayout(CantidadLayout);
@@ -205,23 +235,34 @@ Producto pro = new Producto();
                 .addGap(35, 35, 35)
                 .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(CantidadLayout.createSequentialGroup()
-                        .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(CantidadLayout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cantidad_prod_form_ventatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(id_producto_formventatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre_ventasformstx, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CantidadLayout.createSequentialGroup()
+                                .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(CantidadLayout.createSequentialGroup()
+                                        .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CantidadLayout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)))
+                                .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nombre_ventasformstx, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                    .addComponent(id_producto_formventatxt, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                    .addComponent(cantidad_prod_form_ventatxt, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                            .addGroup(CantidadLayout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(precio_lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tabla_bts, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
@@ -229,41 +270,50 @@ Producto pro = new Producto();
         CantidadLayout.setVerticalGroup(
             CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CantidadLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(id_producto_formventatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cantidad_prod_form_ventatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CantidadLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(1, 1, 1)
                         .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(id_producto_formventatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(jButton3)
+                            .addComponent(tabla_bts))
                         .addGap(18, 18, 18)
                         .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cantidad_prod_form_ventatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(CantidadLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jButton3)))
-                .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CantidadLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CantidadLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombre_ventasformstx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(CantidadLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                            .addComponent(jLabel3)
+                            .addComponent(nombre_ventasformstx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(CantidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(precio_lbl)
+                            .addComponent(jLabel4))
+                        .addGap(45, 45, 45)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        volver_btn.setText("Edit");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenuItem1.setText("Volver");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        volver_btn.add(jMenuItem1);
+
+        jMenuBar1.add(volver_btn);
 
         setJMenuBar(jMenuBar1);
 
@@ -284,6 +334,74 @@ Producto pro = new Producto();
     private void tabla_ventas_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_ventas_prodMouseClicked
         Seleccionardatos();
     }//GEN-LAST:event_tabla_ventas_prodMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      String id = id_producto_formventatxt.getText();
+        
+        if(!"".equals(id)){
+           vs = vsfc.venid(Integer.valueOf(id));
+           
+        if( !"".equals(id_producto_formventatxt.getText() )|| !"".equals(cantidad_prod_form_ventatxt.getText()) || !"".equals(nombre_ventasformstx.getText())){
+                
+                vs.setNombre_del_prodvendido(nombre_ventasformstx.getText());
+                 vs.setId_prod(Integer.parseInt(id_producto_formventatxt.getText()));
+                 vs.setCantidad_del_producto(Integer.parseInt(cantidad_prod_form_ventatxt.getText()));
+                  String preciolbl = precio_lbl.getText();
+                 vs.setPrecio_prod(Integer.valueOf(preciolbl));
+                 //calculo precio x cantidad
+                
+                 String cantidadcal = cantidad_prod_form_ventatxt.getText();
+                 int totalventa = Integer.valueOf(preciolbl) *Integer.valueOf(cantidadcal);
+                 String totalventastr = String.valueOf(totalventa);
+                 vs.setTotal_venta(Integer.parseInt(totalventastr));  
+                 
+             try{
+             conn = (Connection) cn.getConn();
+                 
+             String id_captura_edit = id_producto_formventatxt.getText();
+       
+             String cantidad_edit = cantidad_prod_form_ventatxt.getText();
+           
+             String sql = "UPDATE productos SET  cantidad_producto=cantidad_producto -'"+cantidad_edit+"'  WHERE id='"+id_captura_edit+"'";
+             PreparedStatement pstm = conn.prepareStatement(sql);   
+             pstm.executeUpdate();
+             System.out.println("Funciono la edicion");
+             if(!"".equals(cantidad_prod_form_ventatxt.getText() )|| !"".equals(nombre_ventasformstx.getText())){
+                 ac.setAccion("Se vendio un producto");
+                 ac.setDescripcion_de_accion("Se Vendio un producto");
+                 ac.setObjeto_manipulado(nombre_ventasformstx.getText());
+                 ac.setCantidad_manipulada(Integer.parseInt(cantidad_prod_form_ventatxt.getText()));
+                 accfun.RestarProd(ac);
+             } 
+               CargarTabla();
+             }catch(Exception e){
+                 System.err.println("no funciono");
+             }
+               
+             
+                 
+                 
+                 vsfc.InsertarVenta(vs);
+        
+                
+       } else{
+            JOptionPane.showMessageDialog(null,"id inexistente, ingreselo nuevamente");
+        }
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Inicio_app newin = new Inicio_app();
+        newin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void tabla_btsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla_btsActionPerformed
+       ventas_table vs = new ventas_table();
+       vs.setVisible(true);
+        
+
+    }//GEN-LAST:event_tabla_btsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,7 +433,7 @@ Producto pro = new Producto();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventas().setVisible(true);
+                new Ventasvista().setVisible(true);
             }
         });
     }
@@ -330,12 +448,15 @@ Producto pro = new Producto();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre_ventasformstx;
+    private javax.swing.JLabel precio_lbl;
+    private javax.swing.JToggleButton tabla_bts;
     private javax.swing.JTable tabla_ventas_prod;
+    private javax.swing.JMenu volver_btn;
     // End of variables declaration//GEN-END:variables
 }

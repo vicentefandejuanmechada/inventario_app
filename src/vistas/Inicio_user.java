@@ -136,7 +136,7 @@ public class Inicio_user extends javax.swing.JFrame {
     }//GEN-LAST:event_crear_btn_prodMouseClicked
 
     private void ventas_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ventas_btnMouseClicked
-        Ventas sell = new Ventas();
+        Ventasvista sell = new Ventasvista();
         sell.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ventas_btnMouseClicked

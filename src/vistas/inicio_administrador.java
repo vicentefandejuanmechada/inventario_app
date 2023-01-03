@@ -48,6 +48,11 @@ public class inicio_administrador extends javax.swing.JFrame {
         });
 
         monitorear_user.setText("jButton3");
+        monitorear_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monitorear_userActionPerformed(evt);
+            }
+        });
 
         crear_userbtn.setText("jButton2");
         crear_userbtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,6 +157,12 @@ public class inicio_administrador extends javax.swing.JFrame {
         edi.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_editar_userMouseClicked
+
+    private void monitorear_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monitorear_userActionPerformed
+        accionestabla actb = new accionestabla();
+        actb.setVisible(true);
+       
+    }//GEN-LAST:event_monitorear_userActionPerformed
 
     /**
      * @param args the command line arguments
